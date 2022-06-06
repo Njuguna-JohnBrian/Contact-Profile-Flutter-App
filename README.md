@@ -1,6 +1,13 @@
-# contactprofile
+# CONTACT PROFILE APP
 
-A new Flutter project.
+## SCREENS
+<img alt="ui" width="100%" src="./screens/1.png" />
+
+#
+#
+#
+
+<img alt="ui" width="100%" src="./screens/2.png" />
 
 ## Getting Started
 
