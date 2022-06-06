@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(ContactProfilePage());
 
-//NEW CODE: Separate class to store themes
+enum APP_THEME { LIGHT, DARK }
+
+//Separate class to store themes
 class MyAppThemes {
   //Method to provide light theme
   static ThemeData appThemeLight() {
@@ -25,18 +27,48 @@ class MyAppThemes {
       iconTheme: IconThemeData(
         color: Colors.indigo.shade800,
       ),
+      // Theme for Floating Action Button
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.white, foregroundColor: Colors.black),
+    );
+  }
+
+// DARK THEME
+  static ThemeData appThemeDark() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      // App bar
+      appBarTheme: AppBarTheme(
+        color: Colors.black,
+        iconTheme: IconThemeData(color: Colors.white),
+      ),
+      // Icon
+      iconTheme: IconThemeData(
+        color: Colors.orange,
+      ),
+      // Floating Action Button
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.black, foregroundColor: Colors.white),
     );
   }
 }
 
-class ContactProfilePage extends StatelessWidget {
+class ContactProfilePage extends StatefulWidget {
+  @override
+  _ContactProfilePageState createState() => _ContactProfilePageState();
+}
+
+class _ContactProfilePageState extends State<ContactProfilePage> {
+  var currentTheme = APP_THEME.LIGHT;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
       //Applying theme to app calling MyAppThemes's method
-      theme: MyAppThemes.appThemeLight(),
+      theme: currentTheme == APP_THEME.DARK
+          ? MyAppThemes.appThemeDark()
+          : MyAppThemes.appThemeLight(),
 
       home: Scaffold(
         //Creating app bar
@@ -56,6 +88,18 @@ class ContactProfilePage extends StatelessWidget {
 
         //Creating body part of the app
         body: buildBodyWidget(),
+
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.threesixty),
+          onPressed: () {
+            setState(() {
+              //theme toggles when FAB is pressed
+              currentTheme == APP_THEME.DARK
+                  ? currentTheme = APP_THEME.LIGHT
+                  : currentTheme = APP_THEME.DARK;
+            });
+          },
+        ),
       ),
     );
   }
