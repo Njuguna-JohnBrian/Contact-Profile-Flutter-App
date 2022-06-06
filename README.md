@@ -1,13 +1,13 @@
 # CONTACT PROFILE APP
 
 ## SCREENS
-<img alt="ui" width="100%" src="./screens/1.png" />
+<img alt="ui" width="50%" src="./screens/1.png" />
 
 #
 #
 #
 
-<img alt="ui" width="100%" src="./screens/2.png" />
+<img alt="ui" width="50%" src="./screens/2.png" />
 
 ## Getting Started
 
